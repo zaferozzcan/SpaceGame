@@ -1,6 +1,81 @@
 
-let earth
-let space
+
+////////////////// Hero Class \\\\\\\\\\\\\\\\\\\\
+
+
+class Hero {
+  constructor(name) {
+      this.hull = 20;
+      this.firepower = 5;
+      this.accuracy = .7;
+    };
+    fight(alien) {    //ZAFER ATTACK FUNCTION
+        while (alien.hull == 0 || this.hull == 0) {
+            if (alien.accuracy <= this.accuracy) {
+                alien.hull -= this.firepoint
+            } else {
+                this.hull -= alien.firepoint
+            }
+        }
+        this.checkWin()
+    };
+    checkWin= (alien) => {
+            if (this.hull <= 0) {
+                prompt(`USS Schwarzenegger has been destroyed!`);
+
+            } else {
+                prompt(`${alien} has been destroyed!`)
+
+            }
+        };
+
+    callTheNextAlien(){
+      AlienFactory()
+    }
+    }
+
+  
+
+
+    //////////////////////// Alien Class \\\\\\\\\\\\\\\\\\\\\\
+
+    class Alien {
+        hull = Math.floor(Math.random() * 4) + 3;
+        firepoint = Math.floor(Math.random() * 3) + 2;
+        accuracy = (Math.floor(Math.random() * 3) + 6).toFixed(1) / 10;
+    }
+
+    class AlienFactory {
+      constructor(alienName) {
+        this.alienName = alienName;
+        this.aliens = [];
+      }
+      generateAlien() {
+        const newAlien = new Alien(this.alien, this.aliens.length);
+        this.aliens.push(newAlien);
+      }
+      findAlien(index) {
+        return this.aliens[index];
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class Hero {
     constructor(name) {
