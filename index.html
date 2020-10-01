@@ -1,23 +1,68 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-Earth has been attacked by a horde of aliens! You are the captain of the USS Schwarzenegger, on a mission to destroy every last alien ship.
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Space Battle</title>
+    <script src="app.js" charset="utf-8"></script>
 
-Battle the aliens as you try to destroy them with your lasers.
-        <script src="" async defer></script>
-    </body>
+</head>
+<body>
+
+<header>
+                                            <h1>Space Battle</h1> 
+  </header>
+
+<div class= "gamecanvas">
+   
+  <div class="row">
+      <div class="column">
+        <h1>High Score: <a id="highScore">0</a></h1>
+        <h1> Rank: <a id="rank"></a> </h1>
+        <p><h2> Level: <a id="level">0</a></h2>
+        <p><h2> Total Attacks: <a id="clicks">0</a></h2>
+              <br>
+        </div>
+
+
+
+       <div class="column">
+       <h2>TO ARMS! </h2>
+            <button id="mow" type="button" onClick="onClick()"> ATTACK</button> 
+            <br>
+            <div class="stats">  
+                
+                <h1> Points: <a id="cash">0</a></h1>
+                 
+                      </div>
+            <p><h2> Weapon: <a id="equipped">Blaster</a> </h2>
+                <p><h2> Power: <a id="power">1</a> </h2>
+            <button id="upgradeTool" type="button" onClick="upgradeTool()">Button 2 (Cost 10 Points)</button>
+
+ 
+       
+        
+         
+              
+            </div>   
+                    
+        </div>
+        <div>
+</div>
+
+ 
+</div>
+
+
+      
+  </nav>
+
+  <div class="playerConsole">X</div>
+</body>
 </html>
+
+
+  
+
+
