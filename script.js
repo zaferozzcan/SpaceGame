@@ -19,7 +19,8 @@ class Hero {
         console.log(`${this.name} says: You can’t bring me down! I’m ${this.hull} hitpoints strong!`) //FUNCTIONS: FIGHT, RANDOM, TALK, (ADD HEAL?)
     }
     heroFight(alien) {
-        while (alien.hull != 0 || this.hull != 0) {
+        while (alien.hull > 0 || this.hull > 0) {
+          console.log("herofight is not broken")
             if (Math.random() < this.accuracy) {
                console.log("its a hit");
                  alien.hull -= this.firepower;
@@ -27,7 +28,7 @@ class Hero {
             }
         };
       alienFight(hero){
-         while (alien.hull != 0 || this.hull != 0) {
+         while (alien.hull >= 0 || this.hull >= 0) {
             if (Math.randon() < alien.accuracy){
                console.log("alien hits human")
                this.hull -=alien.firepower
@@ -59,7 +60,7 @@ class Hero {
     announceHealth () {
       console.log(`${this.name} says: SDEFSDEF! ${this.health} HP FEWSSEFSEF!`) //FUNCTIONS: FIGHT, RANDOM, TALK, (ADD HEAL?)
     }}
-    class AlienFactory {
+  class AlienFactory {
       constructor(alienName) {
         this.alienName = alienName;
         this.aliens = [];
@@ -112,11 +113,22 @@ function gameOver() {
       )
 
       ///DECLARE BATTLE
+function playGame(){
 
-    function battle(alien){  //BATTLE FUNCTION
+  if (Player.hull && aliensLeft > 0){
+    battle()
+    playGame()
+  }
+} //Link Button
+   
+  function battle(){
+    console.log("battle has started")
+      //BATTLE FUNCTION
       // hero attacks
       // then alien attacks
-      while ( this.hull != 0 || alien.hull != 0) {
+      console.log(Player.hull)
+      while (Player.hull >= 0 && aliensLeft >= 0) {
+        console.log("loop has started");
       Player.heroFight(alien)
       alien.announceHealth()
       checkWin()
@@ -131,9 +143,9 @@ function gameOver() {
        //  if neither are at 0, repeat
     }
  
-    function talk () {
+  function talk () {
       const sayThis = this.catchPhrases[this.randomNumGenerator(this.catchPhrases)]
       console.log(sayThis)
     }
-  
-battle()  //INITIATE BATTLE WITH BUTTON
+  battle()
+  //INITIATE BATTLE WITH BUTTON
