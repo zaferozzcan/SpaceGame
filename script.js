@@ -1,4 +1,12 @@
+//factoryFunction() DONE
+//battleFunction()
+//chooseFate()
+//loseGame()
+//wingGame()
 
+//linking HTML
+
+<<<<<<< HEAD
 
 ////////////////// Hero Class \\\\\\\\\\\\\\\\\\\\
 
@@ -76,22 +84,29 @@ class Hero {
 
 
 
+=======
+let earth
+let space
+let aliensLeft = 6
+>>>>>>> e7c637e237eb60149385e99e9f9c34b1268b8fb3
 
 class Hero {
     constructor(name) {
-        this.hull = 20;
+        this.hull = 20;  //JS ERROR
         this.firepower = 5;
         this.accuracy = .7;
     }
     announceHealth() {
         console.log(`${this.name} says: You can’t bring me down! I’m ${this.hull} hitpoints strong!`) //FUNCTIONS: FIGHT, RANDOM, TALK, (ADD HEAL?)
     }
-    fight(alien) {    //ZAFER ATTACK FUNCTION
-        while (alien.hull == 0 || this.hull == 0) {
-            if (alien.accuracy <= this.accuracy) {
-                alien.hull -= this.firepoint
+    fight(alien) {    
+        while (alien.hull != 0 || this.hull != 0) {
+            if (Math.random(Math.ceil)*1) > this.accuracy) {
+                {console.log("ITS A HIT")}
+                 alien.hull -= this.firepoint //revisit    RANDOM NUMBER 0 to 1. x>.8 is a hit, x<.8 = miss
             } else {
-                this.hull -= alien.firepoint
+            //   
+                {console.log("ITS A MISS")} //OUTPUT MISS
             }
         }
         this.checkWin()
@@ -105,27 +120,50 @@ class Hero {
     }
 
   class Alien {
-    constructor (name, firepower, accuracy, health = 100, battlecry) { //HERO CLASS
-        this.hull = Math.floor(Math.random()*4)+3;   //RANDOMIZE
-        this.firepower = MAth.floor(Math.random() *3) +2;  //RANDOMIZE
-        this.accuracy = (Math.floor(Math.random() *3) + 6).toFixed(1)/10;    //RANDOMIZE
-      }
+    // constructor (name, firepower, accuracy, health = 100, battlecry) { //HERO CLASS
+        
+        hull = Math.floor(Math.random()*4)+3;   //RANDOMIZE
+        firepower = Math.floor(Math.random() *3) +2;  //RANDOMIZE
+        accuracy = (Math.floor(Math.random() *3) + 6).toFixed(1)/10;    //RANDOMIZE
+      
   
     announceHealth () {
       console.log(`${this.name} says: SDEFSDEF! ${this.health} HP FEWSSEFSEF!`) //FUNCTIONS: FIGHT, RANDOM, TALK, (ADD HEAL?)
     }
   
-    /*
-    attack (hero) {
-      console.log(`${this.name} says ${this.battleCry}`)
-      // advanced access weapons - for simple/basic hw way see Enemy or Hero class
-      const weaponOptions = Object.keys(this.weapons)
-      const selectWeapon = weaponOptions[this.randomNumGenerator(weaponOptions)]
-      enemy.health -= this.weapons[selectWeapon]
+    class AlienFactory {
+      constructor(alienName) {
+        this.alienName = alienName;
+        this.aliens = [];
+      }
+      generateAlien() {  //DO THIS SIX TIMES
+        const newAlien = new Alien(this.company, this.aliens.length);
+        this.aliens.push(newAlien);
+        aliensLeft = aliensLeft - 1
+      }
+      findAlien(index) {
+        return this.aliens[index];
+      }
+    }
+
+
+    function battle(alien){
+      // hero attacks
+      // then alien attacks
+    
+      while ( this.hull != 0 || alien.hull != 0) {
+      herofight()
+      alienfight()
       enemy.announceHealth()
-      
-    }x
-  */
+      hero.announceHealth()
+      checkWin() //FOR BATTLES (small fight)
+      isGameOver() //End entire game
+      }
+      dedideFate(input) //retreat or continue
+     //  if () ***
+       //  if neither are at 0, repeat
+    }
+  
     randomNumGenerator (arr) {
       return Math.floor(Math.random() * 1)
     }
@@ -134,65 +172,36 @@ class Hero {
       const sayThis = this.catchPhrases[this.randomNumGenerator(this.catchPhrases)]
       console.log(sayThis)
     }
-  }
-
-
-
-  const Player = new Hero(Schwarzenneger, 5, accuracy, health = 100, battlecry)    // CREATE HERO
-    name 
-    this.hull = 20,
-      this.firepower = 5,
-      this.accuracy = .7
-  )
   
-  const Alien = new Enemy(    // CREATE ALIEN
+
+
+
+  const Player = new Hero()    // CREATE HERO
+  
+
+
+//******* */
+  const Alien = new Enemy(    // CREATE ALIEN   (CHANGE INTO FACTORY FUNCTION)
     hull = this.Alien.hull
     firepower = this.Alien.firepower
     accuracy = this.Alien.accuracy
   )
   
- // ******
-//class AlienShip X 6      
-//
-//
-//
-//    NEED TO USE A FACTORY FUNCTION TO CREATE 6 
-// FOR LOOP
-//
-// ADD DISPLAY OF ENEMY STATS
 
-function Battle{        //Battle is engaged   CREATE A BATTLE BUTTON?
-    console.log("Battle has begun!")
-}
+battle()  //INITIATE BATTLE WITH BUTTON
 
-//// BATTLE PHASE PLAYS OUT -- REFACTOR
-hero.talkTrash()
-  this.Alien.talkSmack()
-  hero.announceHealth()
-  this.ALien.announceHealth()
+
+//// BATTLE PHASE PLAYS OUT 
+
+// hero.talkTrash()
+//   this.Alien.talkSmack()
+//   hero.announceHealth()
+//   this.ALien.announceHealth()
   
-  hero.fight(this.Alien) //syntax? LINK TO BUTTONS
-  this.Alien.fight(hero)
+  
   
   // EndBattle
   
-  while (hero.health > 5 && this.Alien.health > 5) {
-    hero.fight(this.Alien)
-    this.Alien.fight(hero)
-  }
-  
-  if (hero.health <= 5) {
-    console.log("PLAYER DYING")
-  }
-  
-  if (this.Alien.health <= 5) {
-    console.log("ALIEN DYING")
-  }
-
-
-
-
-
   function isGameOver {
     console.log("Game is Not Over")
 }
@@ -211,9 +220,9 @@ function chooseFate{
 //ADD loseGAME function
 
 
- 
-
-
+//  function winGame {
+// When aliensLeft = 0 && enemy.hull = 0 // GAME ENDS WITH WIN CONDITION
+//  }
 
 
 
