@@ -13,7 +13,7 @@ class Hero {
             console.log("Hero Attack has missed");
         } else {
             console.log("Hero hit the target");
-            alien.aliens[shipsLeft].hull -= this.firepower
+            alien.hull -= this.firepower
         }
     }
 }
@@ -99,13 +99,13 @@ const gameFuntions = {
 }
 
 
+console.log(currentAlien)
 
 
+// while (hero.hull != 0 || alien.findAlien(aliensLeft)) {
+//     hero.heroAttack(currentAlien)
+//     alien.alienAttack(hero)
+//     gameFuntions.checkBattleWinner();
 
-while (hero.hull != 0 || alien.findAlien(aliensLeft)) {
-    hero.heroAttack(currentAlien)
-    alien.alienAttack(hero)
-    gameFuntions.checkBattleWinner();
 
-
-}
+// }

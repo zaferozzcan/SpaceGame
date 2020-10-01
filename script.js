@@ -14,7 +14,7 @@ class Hero {
     } else {
       console.log("Hero hit the target");
 
-      alien.aliens[0].hull -= this.firepower
+      alien.hull -= this.firepower
     }
   }
 }
@@ -77,20 +77,20 @@ var currentAlien = alien.findAlien(alienIndex)
 const gameFuntions = {
   battle: (hero, alien) => {
 
-    while (hero.hull != 0 || currentAlien) {
+    while (hero.hull <= 0 || currentAlien) {
       hero.heroAttack(currentAlien)
       alien.alienAttack(hero)
     }
   },
   checkBattleWinner: () => {
-    if (hero.hull == 0) {
+    if (hero.hull <= 0) {
       console.log("Hero lost the battle, game is over!");
       return
-    } else if (alien.hull == 0) {
+    } else if (alien.hull <= 0) {
       console.log("Alien lost this battle");
       var askInput = prompt("Do you wanna retrieve or continue? r/c")
       if (askInput == "c") {
-        alienIndex++
+        // alienIndex++
         gameFuntions.battle(hero, alien)
       } else if (askInput == "r") {
         console.log("You have lost the game.");
@@ -102,13 +102,13 @@ const gameFuntions = {
 }
 
 
-// console.log(alien.aliens[0])
+// console.log(currentAlien)
 
 
-while (hero.hull >= 0 || alien.findAlien(currentAlien).hull >= 0) {
+while (hero.hull >= 0 || currentAlien.hull >= 0) {
   hero.heroAttack(currentAlien)
-  console.log(hero.hull);
-  console.log(currentAlien.hull);
+  console.log("herohull", hero.hull);
+  console.log("currentalienhull", currentAlien.hull);
   alien.aliens[0].alienAttack(hero)
   gameFuntions.checkBattleWinner();
 }
