@@ -112,3 +112,4 @@ while (hero.hull >= 0 || currentAlien.hull >= 0) {
   alien.aliens[0].alienAttack(hero)
   gameFuntions.checkBattleWinner();
 }
+//
