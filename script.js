@@ -6,89 +6,12 @@
 
 //linking HTML
 
-<<<<<<< HEAD
-
-////////////////// Hero Class \\\\\\\\\\\\\\\\\\\\
-
-
-class Hero {
-  constructor(name) {
-      this.hull = 20;
-      this.firepower = 5;
-      this.accuracy = .7;
-    };
-    fight(alien) {    //ZAFER ATTACK FUNCTION
-        while (alien.hull == 0 || this.hull == 0) {
-            if (alien.accuracy <= this.accuracy) {
-                alien.hull -= this.firepoint
-            } else {
-                this.hull -= alien.firepoint
-            }
-        }
-        this.checkWin()
-    };
-    checkWin= (alien) => {
-            if (this.hull <= 0) {
-                prompt(`USS Schwarzenegger has been destroyed!`);
-
-            } else {
-                prompt(`${alien} has been destroyed!`)
-
-            }
-        };
-
-    callTheNextAlien(){
-      AlienFactory()
-    }
-    }
-
-  
-
-
-    //////////////////////// Alien Class \\\\\\\\\\\\\\\\\\\\\\
-
-    class Alien {
-        hull = Math.floor(Math.random() * 4) + 3;
-        firepoint = Math.floor(Math.random() * 3) + 2;
-        accuracy = (Math.floor(Math.random() * 3) + 6).toFixed(1) / 10;
-    }
-
-    class AlienFactory {
-      constructor(alienName) {
-        this.alienName = alienName;
-        this.aliens = [];
-      }
-      generateAlien() {
-        const newAlien = new Alien(this.alien, this.aliens.length);
-        this.aliens.push(newAlien);
-      }
-      findAlien(index) {
-        return this.aliens[index];
-      }
-    }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 let earth
 let space
 let aliensLeft = 6
->>>>>>> e7c637e237eb60149385e99e9f9c34b1268b8fb3
 
 class Hero {
     constructor(name) {
@@ -99,17 +22,33 @@ class Hero {
     announceHealth() {
         console.log(`${this.name} says: You can’t bring me down! I’m ${this.hull} hitpoints strong!`) //FUNCTIONS: FIGHT, RANDOM, TALK, (ADD HEAL?)
     }
-    fight(alien) {    
+    heroFight(alien) { 
+
         while (alien.hull != 0 || this.hull != 0) {
-            if (Math.random(Math.ceil)*1) > this.accuracy) {
-                {console.log("ITS A HIT")}
-                 alien.hull -= this.firepoint //revisit    RANDOM NUMBER 0 to 1. x>.8 is a hit, x<.8 = miss
-            } else {
-            //   
-                {console.log("ITS A MISS")} //OUTPUT MISS
+            if (Math.randon() < this.accuracy) {
+                console.log("ITS A HIT")
+                 alien.hull -= this.firepower 
+            } else {console.log("ITS A MISS")} //OUTPUT MISS
             }
+        };
+        alienFight(){
+          while (alien.hull != 0 || this.hull != 0) {
+            if (Math.randon() < alien.accuracy){
+               console.log("IT'S ALIEN'S HIT")
+               this.hull -=alien.firepower
+            }else{
+              console.log("ALIEN HAS MISSED");
+            }
+          }
+        };
+
+        checkWin(){
+          if(this.hull<=0){
+            console.log(`${this.name} lost the battle`);
+          }
         }
-        this.checkWin()
+      
+       
     }
     randomNumGenerator(arr) {
         return Math.floor(Math.random() * 1)
