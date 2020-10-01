@@ -1,3 +1,9 @@
+//factoryFunction()
+//battleFunction()
+//chooseFate()
+//loseGame()
+
+//linking HTML
 
 let earth
 let space
