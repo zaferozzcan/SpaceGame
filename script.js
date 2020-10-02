@@ -11,7 +11,7 @@ class Hero {
     var randomNumber = Math.random()
     if (randomNumber >= this.accuracy) {
       console.log("Hero Attack has missed");
-      currentAlien.alienAttack(hero)
+      // currentAlien.alienAttack(hero)
 
     } else {
       console.log("Hero hit the target");
@@ -29,7 +29,7 @@ class Alien {
     var randomNumber = Math.random();
     if (randomNumber >= this.accuracy) {
       console.log("Alien Attack has missed");
-      hero.heroAttack(currentAlien)
+      // hero.heroAttack(currentAlien)
     } else {
       console.log("Alien hit the Hero");
       hero.hull -= this.firepower
@@ -79,36 +79,39 @@ var level = 1
 const gameFuntions = {
   battle: (hero, alien) => {
     hero.heroAttack(alien);
-    gameFuntions.checkBattleWinner()
+    // gameFuntions.checkBattleWinner()
     alien.alienAttack(hero)
     gameFuntions.checkBattleWinner()
   },
   checkBattleWinner: () => {
 
     if (hero.hull <= 0) {
-      console.log("I am checking heros hull ", hero.hull);
+      // console.log("I am checking heros hull ", hero.hull);
       console.log("Hero lost the battle, game is over!");
       return
     } else if (currentAlien.hull <= 0) {
-      console.log("I am checking aliens hull ", currentAlien.hull);
+      // console.log("I am checking aliens hull ", currentAlien.hull);
       console.log("Alien lost this battle-" + level);
       if (level >= 6) {
         console.log("Game is over, enemy has been defeated!");
-        gameFuntions.stopBattle()
+        return false
+        // gameFuntions.stopBattle()
       } else {
         var askInput = prompt("Do you wanna retrieve or continue? r/c")
-        if (askInput == "c" && level < 6) {
+        if (askInput.toLowerCase() === "c" && level <= 6) {
           alienIndex++
           level++
           gameFuntions.battle(hero, currentAlien)
-        } else if (askInput == "r") {
-          gameFuntions.stopBattle();
-          level = 6
+        } else if (askInput.toLowerCase() == "r") {
+          // gameFuntions.stopBattle();
+          console.log("You wanted to retrieved and lost the game!");
+          // level = 6
         } else {
           console.log("put invalid answer--- put r or c");
         }
       }
-
+    } else {
+      gameFuntions.battle(hero, currentAlien)
     }
   },
   stopBattle() {
@@ -135,12 +138,3 @@ gameFuntions.battle(hero, currentAlien)
 
 
 
-
-// while (hero.hull <= 0 || currentAlien.hull <= 0) {
-//   hero.heroAttack(currentAlien)
-//   // console.log("herohull", hero.hull);
-//   // console.log("currentalienhull", currentAlien.hull);
-//   currentAlien.alienAttack(hero)
-//   gameFuntions.checkBattleWinner()
-
-// }
