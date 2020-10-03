@@ -1,140 +1,77 @@
+class Ship {
+    constructor(name, hull, firepower, accuracy) {
+        this.name = name;
+        this.hull = hull;
+        this.firepower = firepower;
+        this.accuracy = accuracy;
+    }
 
-// var aliensLeft = 6
+    attack(other) {
+        alert(this.name + ' attacks ' + other.name + '!');
+        if (Math.random() < this.accuracy) {
+            alert(this.name + ' hits!');
+            other.hull -= this.firepower;
+        } else {
+            alert(this.name + ' misses!');
+        }
+    }
+}
 
-class Hero {
+class AlienShip extends Ship {
     constructor(name) {
-        this.hull = 20;
-        this.firepower = 5;
-        this.accuracy = 0.7
-    };
-    heroAttack = (alien) => {
-        var randomNumber = Math.random()
-        if (randomNumber >= this.accuracy) {
-            console.log("Hero Attack has missed");
-            // currentAlien.alienAttack(hero)
+        super(name, hull, firepower, accuracy);
+        let hull = Math.floor(Math.random() * 4) + 3;
+        let firepower = Math.floor(Math.random() * 3) + 2;
+        let accuracy = (Math.floor(Math.random() * 3) + 6) / 10;
+    }
+}
 
-        } else {
-            console.log("Hero hit the target");
-            alien.hull -= this.firepower
+const uss = new Ship('USS Schwarzenegger', 20, 5, 0.7);
+const aliens = [];
+for (let i = 0; i < 6; i++) {
+    aliens.push(new AlienShip('Alien ' + i));
+}
+
+let aliensDefeated = 0;
+for (let i = 0; i < aliens.length; i++) {
+    // Do battle with the alien
+    let alien = aliens[i];
+    while (uss.hull > 0 && alien.hull > 0) {
+        uss.attack(alien);
+        if (alien.hull > 0) {
+            alien.attack(uss);
         }
     }
-}
 
-class Alien {
-    hull = Math.floor(Math.random() * 4) + 3;
-    firepower = Math.floor(Math.random() * 3) + 2;
-    accuracy = (Math.floor(Math.random() * 3) + 6).toFixed(1) / 10;
+    // End the game if the user lost the battle
+    if (uss.hull <= 0) {
+        alert(uss.name + ' went kabloo-ey!');
+        break;
+    }
 
-    alienAttack = (hero) => {
-        var randomNumber = Math.random();
-        if (randomNumber >= this.accuracy) {
-            console.log("Alien Attack has missed");
-            // hero.heroAttack(currentAlien)
-        } else {
-            console.log("Alien hit the Hero");
-            hero.hull -= this.firepower
+    // Otherwise, end the game if this was the last alien
+    alert(alien.name + ' went kabloo-ey!');
+    aliensDefeated++;
+    if (i == aliens.length - 1) {
+        break;
+    }
+
+    // Otherwise, prompt user for their next action
+    let action = null;
+    while (action == null) {
+        action = prompt('"attack" or "retreat"?');
+        // Keep prompting until the user types "action" or "retreat".
+        if (!(action == 'attack' || action == 'retreat')) {
+            action = null;
         }
     }
-}
-
-
-class AlienFactory {
-    constructor(alienName) {
-        this.alienName = alienName;
-        this.aliens = [];
-    }
-    generateAlien() {
-        const newAlien = new Alien(this.alienName, this.aliens.length);
-        this.aliens.push(newAlien);
-
-    }
-    findAlien(index) {
-        return this.aliens[index];
+    if (action == 'retreat') {
+        break;
     }
 }
 
-
-
-
-
-
-
-///////Battle starts here\\\\\\\
-
-// cretae a hero
-const hero = new Hero("USS")
-
-// cretae all the alien ships
-const alien = new AlienFactory("Alien")
-for (let index = 0; index < 6; index++) {
-    alien.generateAlien()
+if (uss.hull > 0) {
+    alert('Game over, you defeated ' + aliensDefeated + ' aliens!');
+} else {
+    alert('Game over, you lose.');
 }
-
-// console.log(alien.aliens); there are six aliens in the array of aliens to get one use this method ==> alien.findAlien(index)
-var alienIndex = 0
-var currentAlien = alien.findAlien(alienIndex)
-
-
-var level = 1
-const gameFuntions = {
-    battle: (hero, alien) => {
-        hero.heroAttack(alien);
-        // gameFuntions.checkBattleWinner()
-        alien.alienAttack(hero)
-        gameFuntions.checkBattleWinner()
-    },
-    checkBattleWinner: () => {
-
-        if (hero.hull <= 0) {
-            // console.log("I am checking heros hull ", hero.hull);
-            console.log("Hero lost the battle, game is over!");
-            return
-        } else if (currentAlien.hull <= 0) {
-            // console.log("I am checking aliens hull ", currentAlien.hull);
-            console.log("Alien lost this battle-" + level);
-            if (level >= 6) {
-                console.log("Game is over, enemy has been defeated!");
-                return false
-                // gameFuntions.stopBattle()
-            } else {
-                var askInput = prompt("Do you wanna retrieve or continue? r/c")
-                if (askInput.toLowerCase() === "c" && level <= 6) {
-                    alienIndex++
-                    level++
-                    gameFuntions.battle(hero, currentAlien)
-                } else if (askInput.toLowerCase() == "r") {
-                    // gameFuntions.stopBattle();
-                    console.log("You wanted to retrieved and lost the game!");
-                    // level = 6
-                } else {
-                    console.log("put invalid answer--- put r or c");
-                }
-            }
-        } else {
-            gameFuntions.battle(hero, currentAlien)
-        }
-    },
-    stopBattle() {
-        console.log("The game is over");
-        return
-    }
-}
-
-
-
-
-gameFuntions.battle(hero, currentAlien)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
